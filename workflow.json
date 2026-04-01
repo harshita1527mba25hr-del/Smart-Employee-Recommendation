@@ -1,0 +1,180 @@
+{
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [200, 300]
+    },
+    {
+      "parameters": {
+        "operation": "read",
+        "sheetId": "YOUR_GOOGLE_SHEET_ID",
+        "range": "Sheet1!A:D"
+      },
+      "name": "Get Employees",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 1,
+      "position": [400, 300],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "YOUR_CREDENTIAL_ID",
+          "name": "Google Sheets Account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json[\"Performance\"]}}",
+              "operation": "larger",
+              "value2": 85
+            },
+            {
+              "value1": "={{$json[\"Attendance\"]}}",
+              "operation": "larger",
+              "value2": 90
+            }
+          ]
+        }
+      },
+      "name": "Highly Recommended IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [600, 200]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "number": [
+            {
+              "value1": "={{$json[\"Performance\"]}}",
+              "operation": "between",
+              "value2": 70,
+              "value3": 85
+            }
+          ]
+        }
+      },
+      "name": "Recommended IF",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [600, 400]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": false,
+        "values": {
+          "string": [
+            {
+              "name": "Recommendation",
+              "value": "Highly Recommended"
+            }
+          ]
+        }
+      },
+      "name": "Highly Recommended",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [800, 200]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": false,
+        "values": {
+          "string": [
+            {
+              "name": "Recommendation",
+              "value": "Recommended"
+            }
+          ]
+        }
+      },
+      "name": "Recommended",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [800, 400]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": false,
+        "values": {
+          "string": [
+            {
+              "name": "Recommendation",
+              "value": "Not Recommended"
+            }
+          ]
+        }
+      },
+      "name": "Not Recommended",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [800, 600]
+    },
+    {
+      "parameters": {
+        "mode": "append"
+      },
+      "name": "Merge All",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 1,
+      "position": [1000, 400]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "sheetId": "YOUR_GOOGLE_SHEET_ID",
+        "range": "Sheet1!E:F"
+      },
+      "name": "Update Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 1,
+      "position": [1200, 400],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "YOUR_CREDENTIAL_ID",
+          "name": "Google Sheets Account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [[{ "node": "Get Employees", "type": "main", "index": 0 }]]
+    },
+    "Get Employees": {
+      "main": [
+        [{ "node": "Highly Recommended IF", "type": "main", "index": 0 }],
+        [{ "node": "Recommended IF", "type": "main", "index": 0 }]
+      ]
+    },
+    "Highly Recommended IF": {
+      "main": [
+        [{ "node": "Highly Recommended", "type": "main", "index": 0 }],
+        [{ "node": "Recommended IF", "type": "main", "index": 0 }]
+      ]
+    },
+    "Recommended IF": {
+      "main": [
+        [{ "node": "Recommended", "type": "main", "index": 0 }],
+        [{ "node": "Not Recommended", "type": "main", "index": 0 }]
+      ]
+    },
+    "Highly Recommended": {
+      "main": [[{ "node": "Merge All", "type": "main", "index": 0 }]]
+    },
+    "Recommended": {
+      "main": [[{ "node": "Merge All", "type": "main", "index": 1 }]]
+    },
+    "Not Recommended": {
+      "main": [[{ "node": "Merge All", "type": "main", "index": 2 }]]
+    },
+    "Merge All": {
+      "main": [[{ "node": "Update Sheet", "type": "main", "index": 0 }]]
+    }
+  }
+}
