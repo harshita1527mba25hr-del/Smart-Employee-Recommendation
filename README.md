@@ -38,7 +38,6 @@ The recommendation is based on:
    - Not Recommended
 5. Merge all results
 6. Append updated data into Google Sheets
-![WhatsApp Image 2026-03-31 at 3 19 03 PM](https://github.com/user-attachments/assets/21f2cb66-c194-401a-af52-0eb98035853d)
 
 ---
 
