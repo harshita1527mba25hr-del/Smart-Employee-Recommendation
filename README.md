@@ -38,6 +38,7 @@ The recommendation is based on:
    - Not Recommended
 5. Merge all results
 6. Append updated data into Google Sheets
+![WhatsApp Image 2026-03-31 at 3 19 03 PM](https://github.com/user-attachments/assets/21f2cb66-c194-401a-af52-0eb98035853d)
 
 ---
 
@@ -63,10 +64,10 @@ The recommendation is based on:
 ## 📷 Project Screenshots
 
 ### 🔹 Workflow
-(Add your workflow screenshot here)
+![WhatsApp Image 2026-03-31 at 3 19 03 PM](https://github.com/user-attachments/assets/b9acef67-e7fb-4b12-b434-d42eead424d0)
 
 ### 🔹 Dashboard
-(Add your dashboard screenshot here)
+![WhatsApp Image 2026-04-01 at 3 23 08 PM](https://github.com/user-attachments/assets/3ac217a2-1111-4377-a5f7-03913402f357)
 
 ---
 
