@@ -1,17 +1,17 @@
 # 👨‍💼 Employee Recommendation System (n8n Workflow)
 
-## 📌 Project Overview
+## Project Overview
 This project is an automated Employee Recommendation System built using n8n. It analyzes employee data such as performance score and attendance to categorize employees into:
 
-- ⭐ Highly Recommended
-- 👍 Recommended
-- ❌ Not Recommended
+-  Highly Recommended
+-  Recommended
+-  Not Recommended
 
 The system also updates results into Google Sheets and visualizes insights in a dashboard.
 
 ---
 
-## ⚙️ Workflow Logic
+##  Workflow Logic
 
 The recommendation is based on:
 
@@ -27,7 +27,7 @@ The recommendation is based on:
 
 ---
 
-## 🔄 Workflow Steps
+##  Workflow Steps
 
 1. Trigger workflow manually
 2. Fetch employee data from Google Sheets
@@ -41,7 +41,7 @@ The recommendation is based on:
 
 ---
 
-## 📊 Dashboard Features
+##  Dashboard Features
 
 - Total Employees Count
 - Average Performance Score
@@ -52,7 +52,7 @@ The recommendation is based on:
 
 ---
 
-## 🛠️ Tools Used
+##  Tools Used
 
 - n8n (Workflow Automation)
 - Google Sheets
@@ -60,17 +60,17 @@ The recommendation is based on:
 
 ---
 
-## 📷 Project Screenshots
+##  Project Screenshots
 
-### 🔹 Workflow
+###  Workflow
 ![WhatsApp Image 2026-03-31 at 3 19 03 PM](https://github.com/user-attachments/assets/b9acef67-e7fb-4b12-b434-d42eead424d0)
 
-### 🔹 Dashboard
+###  Dashboard
 ![WhatsApp Image 2026-04-01 at 3 23 08 PM](https://github.com/user-attachments/assets/3ac217a2-1111-4377-a5f7-03913402f357)
 
 ---
 
-## 🎯 Use Case
+##  Use Case
 
 This project helps HR teams:
 - Identify top performers
@@ -79,14 +79,14 @@ This project helps HR teams:
 
 ---
 
-## 👩‍💻 Author
+##  Author
 
 Harshita  
 HR Analytics Project
 
 ---
 
-## ⭐ Future Improvements
+##  Future Improvements
 
 - Add AI-based recommendations
 - Real-time dashboard updates
